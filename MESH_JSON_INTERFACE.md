@@ -1,122 +1,91 @@
-# Pixel Studio 3D - Direct Mesh JSON Interface
+# Pixel Studio 3D — Low-poly character mesh contract
 
-This document is the portable authoring contract for AI agents and external tools that create or revise character surfaces for Pixel Studio 3D. It describes data the current application actually validates. The app uses Three.js for rendering; this interface is the application's own stable model contract, independent of Three.js internals.
+This portable contract describes the geometry the app validates and renders. Three.js is the renderer; `pixel-studio-3d-project` and `pixel-studio-3d-commands` are the app's own data formats. An external AI can read a reference and author these JSON documents, then a person can inspect and revise the same geometry in the studio. There is no built-in AI endpoint or automatic image-to-3D reconstruction.
 
-## Workflow
+## Modeling intent
 
-1. Read the supplied reference image and the current project JSON.
-2. Build the character from authored indexed surfaces (`type: "mesh"`), not a stack of primitive proxies. Use separate stable mesh IDs for meaningful surface regions such as torso, face, hair masses, sleeves, skirt, and wings.
-3. Apply a valid `pixel-studio-3d-commands` v1 document in the JSON panel or call `window.pixelStudio3D.applyCommands(...)`.
-4. Compare the render against the reference from the front and side. Preserve existing IDs and submit `setMeshData` only for surfaces that need revision.
-5. Keep each iteration as a separate versioned example JSON when requested. Never silently replace an earlier sample.
+This interface is for authored low-poly/cartoon characters, not only primitive blockouts. Build the torso, pelvis/skirt, head, limbs and major hair masses as actual closed volumes. Use thin triangle meshes for genuinely surface-like details such as eyes, bangs, feather plates, ornaments and cloth accents. Use several purposeful mesh objects with stable IDs rather than one giant surface or a pile of spheres/cylinders.
 
-AI inference is external. Pixel Studio 3D does not send the reference or model to an AI service.
+A single 2D reference only constrains one projection. Compare front, side and back views, and make a deliberate depth design from the reference. A model cannot infer unseen anatomy from the front image alone; side/back shapes are authored design choices and should be revised against those views.
 
-## Coordinate and mesh contract
+## Coordinate and object contract
 
-- Right-handed, Y-up coordinates; +Z is the front/viewer side; +X is the character's left in a front view.
-- Each vertex is an object-local finite `[x, y, z]` triple. Object `position`, `rotation`, and `scale` transform the complete mesh.
-- Triangle indices are zero-based and refer to `geometry.vertices`. Every face is exactly `[a, b, c]`; order controls normal direction. Use consistent outward counter-clockwise winding as viewed from outside.
-- Reuse indices where shading should interpolate smoothly. Duplicate vertices at hard edges or color boundaries.
-- `vertexColors` is optional. If supplied, it has exactly one `#RRGGBB` sRGB color per vertex; colors interpolate across triangles. Omit it for uniform `color`. To make a flat-colored face, duplicate its vertices and assign the same color to each duplicate.
-- The renderer computes vertex normals. It does not repair holes, non-manifold edges, self-intersections, or inconsistent winding.
+- Right-handed coordinates; +Y is up, +Z faces the viewer/front, +X is the character's left in a front view.
+- Every mesh object has `type: "mesh"`, `geometry`, a uniform `color`, and optional position/rotation/scale. Geometry coordinates are object-local and transforms apply after geometry creation.
+- Project format is `pixel-studio-3d-project` v1. AI edits can use `pixel-studio-3d-commands` v1 with `addMesh` and `setMeshData`.
 
-## Limits
+## Preferred geometry: closed cross-section volume
 
-- 3 to 32,768 vertices per mesh.
-- 1 to 65,536 triangles per mesh.
-- Local vertex coordinates within `[-1000, 1000]` on each axis.
-- Each triangle must use three distinct valid integer indices and have nonzero area.
-- Optional `vertexColors` must be empty/omitted or exactly match the vertex count, with six-digit hex colors.
-- 500 model objects and 10,000 commands per command document.
-- These are validation ceilings, not recommended target sizes. Prefer a compact silhouette and deliberate topology, then refine in small reviewable steps.
+`geometry.sections` is an ordered sequence of closed 3D perimeter loops. Each loop has 6–32 `[x,y,z]` points; every loop has the same point count and corresponding points retain the same order. Loops can lie in any orientation. The renderer triangulates between adjacent loops and caps both ends. This is the preferred compact contract for low-poly volumes such as a torso, head, skirt, arm or leg. Use enough stations to describe anatomical changes: shoulder, chest, waist, pelvis; or limb root, bend, wrist/ankle.
 
-## Command document
+For a vertical torso, each loop can be an octagonal/decagonal ring around Y. For an arm extending along a bent path, each loop is a perimeter around a station on that path, oriented perpendicular to the local direction. Keep loops non-crossing and consistently ordered. `sectionColors` optionally supplies one `#RRGGBB` color per loop. Alternatively, `vertexColors` supplies one color per point across all loops (`sections.length * pointsPerLoop`). Do not supply both color arrays.
 
 ```json
 {
-  "format": "pixel-studio-3d-commands",
-  "version": 1,
-  "name": "Dahlia mesh draft",
-  "settings": {
-    "renderStyle": "toon",
-    "bounds": { "x": 6, "y": 7, "z": 4 },
-    "grid": true,
-    "floorY": -1.4
-  },
-  "commands": [
-    {
-      "op": "addMesh",
-      "id": "character-torso",
-      "name": "Tunic surface",
-      "color": "#ffffff",
-      "position": { "x": 0, "y": 0, "z": 0 },
-      "rotation": { "x": 0, "y": 0, "z": 0 },
-      "scale": { "x": 1, "y": 1, "z": 1 },
-      "geometry": {
-        "vertices": [
-          [-0.5, 0, 0.25], [0.5, 0, 0.25], [0.4, 1, 0.25], [-0.4, 1, 0.25],
-          [-0.5, 0, -0.25], [0.5, 0, -0.25], [0.4, 1, -0.25], [-0.4, 1, -0.25]
-        ],
-        "triangles": [
-          [0, 1, 2], [0, 2, 3], [4, 6, 5], [4, 7, 6],
-          [0, 4, 5], [0, 5, 1], [1, 5, 6], [1, 6, 2],
-          [2, 6, 7], [2, 7, 3], [3, 7, 4], [3, 4, 0]
-        ],
-        "vertexColors": ["#819fc7", "#819fc7", "#c6dcf2", "#c6dcf2", "#617da8", "#617da8", "#a4bddb", "#a4bddb"]
-      }
-    }
-  ]
+  "op": "addMesh",
+  "id": "dahlia-torso",
+  "name": "Torso volume",
+  "color": "#91afd8",
+  "geometry": {
+    "sections": [
+      [[-0.30,1.45,0.15],[-0.21,1.45,0.31],[0,1.45,0.37],[0.21,1.45,0.31],[0.30,1.45,0.15],[0.21,1.45,-0.01],[0,1.45,-0.07],[-0.21,1.45,-0.01]],
+      [[-0.42,1.95,0.12],[-0.30,1.95,0.32],[0,1.95,0.40],[0.30,1.95,0.32],[0.42,1.95,0.12],[0.30,1.95,-0.08],[0,1.95,-0.16],[-0.30,1.95,-0.08]],
+      [[-0.52,2.30,0.10],[-0.37,2.30,0.30],[0,2.30,0.38],[0.37,2.30,0.30],[0.52,2.30,0.10],[0.37,2.30,-0.10],[0,2.30,-0.18],[-0.37,2.30,-0.10]]
+    ],
+    "sectionColors": ["#7794c3", "#91afd8", "#b8d0ed"]
+  }
 }
 ```
 
-### Supported operations
+The loop point ordering above is an example perimeter, not a required anatomical convention. Keep the order consistent between adjacent loops. When creating surfaces with severe taper, use a small but nonzero end loop instead of coincident points.
 
-- Optional top-level `name` updates the project name; settings are applied before commands.
-- `addMesh`: adds an authored `mesh` object. `id` must be unique. `geometry.vertices` and `geometry.triangles` are required; `vertexColors` is optional.
-- `setMeshData`: replaces the full topology/color payload of an existing `mesh`. It cannot target a primitive.
-- `setTransform`: changes `position`, `rotation` (degrees), and/or `scale` on an existing object.
-- `setMaterial`: changes the uniform base `color`.
-- `removeObject`: removes one object by `id`.
-- `clear`: removes all objects.
+## Alternate geometry: authored triangle surface
 
-All commands are validated before the updated scene is installed. Invalid documents leave the current scene untouched and display a validation error.
+Use `geometry.vertices` (3–32,768 finite local XYZ triples, each coordinate in `[-1000,1000]`) and `geometry.triangles` (1–65,536 zero-based `[a,b,c]` integer indices). Triangles must reference distinct valid vertices and have nonzero area. Winding controls normals. `vertexColors` is omitted or has one six-digit hex color per vertex. Reuse vertices for interpolated normals; duplicate them for hard edges or flat color boundaries. This form is useful for hair clumps, face features, wings/feathers, and deliberately shaped silhouettes. A front-only surface does not add body volume.
 
-## Public JavaScript API
+The validator checks input shape, range, indices and direct triangle area. It does not repair self-intersections, holes, non-manifold edges, bad loop correspondence, or bad winding.
 
-The app publishes `window.pixelStudio3D` after `app.js` initializes. Calls use the same validation, undo history, autosave, and render path as JSON application.
+## Limits
+
+- Sections: 2–64 loops, each with 6–32 points; resulting geometry remains under 32,768 vertices / 65,536 triangles.
+- Section loop coordinates: finite values in `[-1000,1000]`.
+- Direct mesh: 3–32,768 vertices and 1–65,536 triangles.
+- At most 500 objects and 10,000 commands per document.
+- These are validation ceilings, not suggested densities. A stylized character usually benefits more from intentional silhouette and volume stations than from a high polygon count.
+
+## Command operations
+
+- `addMesh`: add a mesh using either `geometry.sections` or `geometry.vertices` + `geometry.triangles`.
+- `setMeshData`: replace the complete geometry/color data of an existing `mesh`; use the same two geometry alternatives.
+- `setTransform`: set position/rotation-in-degrees/scale.
+- `setMaterial`: set uniform base color.
+- `removeObject`, `clear`.
+
+All commands validate before the scene changes. Invalid command documents leave the current scene intact. A complete project can also be imported/exported as JSON. Past sample versions should remain immutable.
+
+## Human and AI workflow
+
+1. Load a reference and establish the overall height, width and front silhouette.
+2. Author closed volumes for skull/head, chest/torso, pelvis or skirt, upper/lower arms, and upper/lower legs. Keep depth in +Z/-Z explicit; do not collapse every ring to one Z plane.
+3. Add authored surface meshes for face, hair locks, wings and ornaments, checking their offsets against the volume.
+4. Inspect the front, side and back views. Correct the side silhouette and balance before adding small details.
+5. Preserve object IDs between iterations and return only affected `setMeshData` operations where practical. Save each reviewable version separately.
+
+The studio's object inspector includes an editable JSON field for selected mesh geometry. Edit `sections` or `vertices` there and apply; the regular JSON command panel and public API use the same validation and render path. Transform gizmos remain available for object-level human editing. There is no vertex drag/sculpt brush, rig, skinning, or texture paint system yet.
+
+## Public API
 
 ```js
-const schema = window.pixelStudio3D.getJSONFormatHelp();
-const currentProject = window.pixelStudio3D.getProject();
-
 window.pixelStudio3D.createMesh({
-  id: "test-triangle",
-  name: "Test surface",
-  color: "#ffffff",
-  vertices: [[0,0,0], [1,0,0], [0,1,0]],
-  triangles: [[0,1,2]],
-  vertexColors: ["#ff6688", "#66ccff", "#ffee88"]
+  id: "body",
+  name: "Torso",
+  color: "#91afd8",
+  geometry: { sections: [ring0, ring1, ring2], sectionColors: ["#7794c3", "#91afd8", "#b8d0ed"] }
 });
 
-window.pixelStudio3D.setMeshData("test-triangle", {
-  vertices: [[0,0,0], [1,0,0], [0,1,0]],
-  triangles: [[0,1,2]]
-});
-
-const mesh = window.pixelStudio3D.getMesh("test-triangle");
-const projectJson = window.pixelStudio3D.exportProject();
+window.pixelStudio3D.setMeshData("body", { sections: [ring0, ring1, ring2] });
+const mesh = window.pixelStudio3D.getMesh("body");
+const contract = window.pixelStudio3D.getJSONFormatHelp();
 ```
 
-| Method | Behavior |
-| --- | --- |
-| `getJSONFormatHelp()` | Returns a copy of the JSON contract and limits |
-| `getProject()` | Returns a deep copy of the current project |
-| `getMesh(id)` | Returns a deep copy of a custom mesh or `null` |
-| `createMesh(mesh)` | Adds and returns a validated custom mesh |
-| `setMeshData(id, geometry)` | Replaces mesh topology and colors |
-| `applyCommands(documentOrArray)` | Applies a wrapped command document or command array atomically |
-| `exportProject()` | Returns the complete project as formatted JSON text |
-| `exportCommandsHelp()` | Returns the command contract as formatted JSON text |
-
-This contract exposes authored geometry to AI and external tools. It does not claim to provide an interactive sculpt brush, automatic image-to-3D generation, a skeleton rig, or texture painting.
+`getProject()`, `exportProject()`, `applyCommands()`, and `exportCommandsHelp()` are also available. API calls use the same validation, history, persistence and rendering path as the UI.

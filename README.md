@@ -67,7 +67,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\serve.ps1
 | `torus` | `radius`, `tube`, `radialSegments`, `tubularSegments` |
 | `polygon` | `points`, `depth`, `bevelSize`, `bevelSegments`, optional `smooth`, `curveSegments` |
 | `curve` | 3D 경로 `points3D`, `radius`, `tubularSegments`, `radialSegments` |
-| `mesh` | 직접 구성한 `vertices`, `triangles`, 선택 `vertexColors` |
+| `mesh` | 권장 체적 `sections` 단면 루프 또는 직접 표면 `vertices`/`triangles`; 각 방식에 맞는 선택 색상 배열 |
 
 분할 수는 3–128, polygon은 3–512개의 유효한 XY 점, curve는 2–512개의 XYZ 점을 받습니다. 모델은 최대 500개 오브젝트, 명령 문서는 최대 10,000개 명령입니다. 화면 참조 이미지, 카메라 위치, 현재 선택, 실행 취소 기록은 모델 파일에 포함되지 않습니다.
 
@@ -105,11 +105,11 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\serve.ps1
 | op | 필수 필드 | 동작 |
 | --- | --- | --- |
 | `addPrimitive` | `type`, 선택 `id` | 기본 메시 추가. `geometry`, `position`, `rotation`, `scale`, `color`, `name`은 선택 |
-| `addMesh` | `id`, `geometry.vertices`, `geometry.triangles` | 정점/삼각형을 가진 직접 구성 메시 추가. `vertexColors`는 선택 |
+| `addMesh` | `id`, `geometry.sections` 또는 `vertices` + `triangles` | 닫힌 체적 단면 또는 직접 표면 메시 추가 |
 | `setTransform` | `id` | 지정된 위치/회전/크기 축만 변경 |
 | `setMaterial` | `id`, `color` | 오브젝트 색상 변경 |
 | `setGeometry` | `id`, `geometry` | 해당 primitive 치수 또는 분할 밀도 변경 |
-| `setMeshData` | `id`, `geometry.vertices`, `geometry.triangles` | 기존 `mesh`의 정점/위상/색상을 통째로 교체 |
+| `setMeshData` | `id`, `geometry.sections` 또는 `vertices` + `triangles` | 기존 `mesh`의 체적/표면 위상과 색상을 통째로 교체 |
 | `removeObject` | `id` | 오브젝트 삭제 |
 | `clear` | 없음 | 모든 메시 삭제 |
 
@@ -117,7 +117,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\serve.ps1
 
 ### AI 작업 프롬프트 예
 
-> 아래 Pixel Studio 3D v1 규격에 맞는 `pixel-studio-3d-commands` JSON만 작성해 주세요. 기본 도형 조합에 그치지 말고, 캐릭터의 각 주요 표면을 직접 설계한 `mesh` 정점과 삼각형으로 구성하세요. 정면은 +Z, 위쪽은 +Y입니다. 각 삼각형은 0부터 시작하는 정점 인덱스 `[a,b,c]`를 쓰고, 정점별 색상은 `vertexColors`로 지정합니다. 실루엣/형태를 먼저 만들고, 얼굴·머리카락·옷·날개는 읽기 쉬운 표면 영역으로 나눕니다. 기존 장면을 수정할 때는 id를 유지하고 변경할 메시만 `setMeshData`로 교체하세요. 반환 전 정점 인덱스와 좌표 범위를 확인하세요.
+> 아래 Pixel Studio 3D v1 규격에 맞는 `pixel-studio-3d-commands` JSON을 작성해 주세요. 구/원통을 단순 조립하지 말고 머리, 몸통, 골반/치마, 팔다리의 주요 부위를 닫힌 3D 저폴리 체적으로 설계하세요. 권장 방식은 `geometry.sections`: 몸통은 어깨·가슴·허리·골반 높이의 단면 루프, 팔다리는 뿌리·관절·끝점 단면을 3D 좌표로 연결합니다. 정면은 +Z, 위쪽은 +Y이고 앞/옆/뒤 시점에서 깊이와 실루엣을 확인하세요. 눈·앞머리·깃털 등 얇은 디테일만 `vertices`/`triangles` 표면으로 둡니다. 기존 장면을 수정하면 id를 유지하고 변경할 메시를 `setMeshData`로 교체하세요. 반환 전 모든 루프의 점 개수/순서와 색상 배열 길이를 검증하세요.
 
 ## 애니메이션 확장 방향 (미구현)
 
@@ -205,7 +205,15 @@ These changes improve stylized blockout work but do not create a production avat
 
 The latest in-app example is `examples/Dahlia/v6/`. It adjusts the oversized sleeve tubes and hand placement to create a visible folded-arm pose across the chest, adds rounded shoulder volumes, and keeps the v5 toon/loft foundation. Load it with **Dahlia v6 열기 · 포즈 다듬기** or `?example=Dahlia-v6`. `examples/Dahlia/build-v6.ps1` recreates the JSON from v5, and the version folder contains its local viewport screenshot and proxy reference. It is still a blockout of independent meshes; no rig or connected skin is included.
 
-## Direct vertex mesh contract
+## Authored mesh contract
+
+캐릭터 모델의 기본 구조는 구·원통 같은 기본 도형을 이어 붙이는 방식만을 전제로 하지 않습니다. `mesh.geometry.sections`에 순서가 일치하는 3D 닫힌 단면 루프를 넣으면 앱이 각 루프를 연결하고 양 끝을 막아 **실제 부피를 가진 저폴리 메시**를 생성합니다. 몸통·머리·치마·팔·다리처럼 단면이 변하는 부위에 권장합니다. 눈, 앞머리, 깃털처럼 얇은 표면 디테일에는 직접 `vertices`/`triangles`를 사용합니다.
+
+선택한 `mesh` 오브젝트는 속성 패널의 메시 JSON 편집기에서 `sections` 또는 정점/삼각형 데이터를 직접 수정하고 적용할 수 있습니다. JSON 명령 패널과 `window.pixelStudio3D` API도 같은 검증·렌더링 경로를 사용합니다. 뷰포트에는 정면·측면·후면 카메라 버튼이 있어 두께와 실루엣을 확인할 수 있습니다. 사람이 오브젝트 단위 변환 도구를 사용하고, AI가 같은 계약의 JSON을 작성/수정하는 흐름입니다.
+
+세부 규격과 인체형 단면 설계 지침은 [`MESH_JSON_INTERFACE.md`](./MESH_JSON_INTERFACE.md)를 보세요. 이 앱은 AI 엔드포인트나 자동 이미지→3D 변환을 포함하지 않으며, 전면 2D 레퍼런스만으로 보이지 않는 측후면 형태가 자동 추론된다고 보장하지 않습니다.
+
+## Direct vertex mesh contract (surface form)
 
 For hand-authored character surfaces, use `type: "mesh"`. Coordinates inside `geometry.vertices` are object-local `[x,y,z]` values. `geometry.triangles` contains zero-based `[a,b,c]` indices into that vertex array. Triangle winding sets face normals; reuse vertex indices for smoothly interpolated normals and duplicate vertices where you need hard edges. `vertexColors` is optional; when present, it must contain exactly one six-digit sRGB hex color per vertex. To assign a solid color per face, duplicate that face's vertices and give the duplicates one shared color. Omit it for the object's uniform `color`.
 
@@ -247,23 +255,26 @@ The app exposes `window.pixelStudio3D` after loading `app.js`:
 const contract = window.pixelStudio3D.getJSONFormatHelp();
 const current = window.pixelStudio3D.getProject();
 window.pixelStudio3D.createMesh({
-  id: "test-triangle", name: "Test surface", color: "#ffffff",
-  vertices: [[0,0,0],[1,0,0],[0,1,0]],
-  triangles: [[0,1,2]],
-  vertexColors: ["#ff6688", "#66ccff", "#ffee88"]
+  id: "torso", name: "Torso volume", color: "#91afd8",
+  geometry: { sections: [ringAtHip, ringAtWaist, ringAtChest] }
 });
-window.pixelStudio3D.setMeshData("test-triangle", {
-  vertices: [[0,0,0],[1,0,0],[0,1,0]], triangles: [[0,1,2]]
+window.pixelStudio3D.setMeshData("torso", {
+  sections: [ringAtHip, ringAtWaist, ringAtChest],
+  sectionColors: ["#7794c3", "#91afd8", "#b8d0ed"]
 });
-const mesh = window.pixelStudio3D.getMesh("test-triangle");
+const mesh = window.pixelStudio3D.getMesh("torso");
 const projectJson = window.pixelStudio3D.exportProject();
 ```
 
 Methods are `getJSONFormatHelp()`, `getProject()`, `getMesh(id)`, `createMesh(mesh)`, `setMeshData(id, geometry)`, `applyCommands(documentOrArray)`, `exportProject()`, and `exportCommandsHelp()`. API edits use the same validation and undo/persistence path as JSON application. The API provides model data/rendering, not an AI endpoint.
 
-직접 메시 계약을 다른 AI/툴에 전달하려면 [`MESH_JSON_INTERFACE.md`](./MESH_JSON_INTERFACE.md)를 사용하세요. 이 문서는 정점/삼각형 규격, 제한, 명령 연산과 공개 브라우저 API를 독립적으로 설명합니다.
+다른 AI/툴에 전달할 수 있는 독립 규격은 [`MESH_JSON_INTERFACE.md`](./MESH_JSON_INTERFACE.md)입니다. 체적 단면 및 표면 메시 규칙, 제한, 명령 연산, API를 함께 설명합니다.
 
 
 ### Direct mesh example
 
 examples/Dahlia/v7/ is the current implementation proof: 15 custom indexed meshes and no built-in primitive shapes. It is intentionally a low-poly fixture for the mesh JSON contract, not a finished avatar.
+
+### Dahlia v8: volumetric low-poly character
+
+`examples/Dahlia/v8/`는 머리, 뒤쪽 머리카락, 몸통, 치마, 팔, 다리, 날개 기초를 단면 기반 폐쇄 체적으로 구성하고 눈/앞머리/깃털은 직접 표면 메시로 얹은 카툰풍 예제입니다. **Dahlia v8 열기 · 체적 메시** 또는 `?example=Dahlia-v8`로 불러온 뒤 정면·측면·후면을 확인할 수 있습니다. URL에 `&view=side` 또는 `&view=back`을 붙이면 해당 시점으로 바로 열립니다. 참조 파일은 워크스페이스에 있던 유사 픽셀아트 프록시이며 첨부한 정확한 원본이 아닙니다. v8은 닫힌 캐릭터 부피를 만드는 인터페이스 실증용 블록아웃이고, 완성된 아바타/리깅 모델이 아닙니다.

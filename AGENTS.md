@@ -15,7 +15,7 @@ The application does not call an AI service. AI authors `pixel-studio-3d-command
 | `styles.css` | Studio UI, themes and responsive layout |
 | `serve.ps1` | Optional PowerShell static HTTP server for Windows |
 | `README.md` | User guide and complete public JSON interface contract |
-| `MESH_JSON_INTERFACE.md` | Portable direct-vertex AI authoring contract; keep synchronized with runtime validation and `schemaHelp` |
+| `MESH_JSON_INTERFACE.md` | Portable low-poly character contract for volumetric sections and direct surfaces; keep synchronized with runtime validation and `schemaHelp` |
 
 ## Runtime architecture
 
@@ -28,12 +28,12 @@ The application does not call an AI service. AI authors `pixel-studio-3d-command
 ## Current model limits
 
 - `FORMAT = pixel-studio-3d-project`, version 1.
-- Supported types: `box`, `sphere`, `cylinder`, `cone`, `torus`, `polygon` (extruded local XY outline), `curve` (smooth 3D tube along XYZ control points, optionally tapered with `radiusStart`/`radiusEnd`), `loft` (elliptical cross-section volume from Y profiles), and `mesh` (authored vertices, triangle indices, optional per-vertex colors).
+- Supported types: `box`, `sphere`, `cylinder`, `cone`, `torus`, `polygon`, `curve`, `loft`, and custom `mesh`. For character geometry, `mesh.geometry.sections` defines 2–64 connected/capped 3D perimeter loops (6–32 matching points each); this builds low-poly volume along any axis. `vertices` + `triangles` remain available for authored surfaces and details, with optional section/per-vertex colors.
 - `settings.renderStyle` chooses `soft` or `toon`; `settings.floorY` changes only the preview grid plane and does not transform model objects.
 - Each mesh has stable unique `id`, name, six-digit opaque hex color, position/rotation/scale vectors, and type-specific geometry dimensions/segment counts.
 - Segment counts validate/clamp to 3–128; project maximum 500 meshes; command max 10,000 operations.
 - `settings.bounds` is a declared work volume only. It does not clip, constrain, or calculate true intersected solid volume.
-- `mesh` is the arbitrary indexed triangle surface contract. It is editable through full JSON replacement and `window.pixelStudio3D` API; there is not yet an interactive vertex/edge sculpt brush, texture painting, Boolean operation, or image-to-3D reconstruction.
+- `mesh` supports either a closed cross-section volume (`geometry.sections`) or authored triangle surfaces (`vertices`/`triangles`). Selected mesh geometry is editable in the inspector JSON field or the command panel; object transforms use the gizmo. There is not yet a vertex sculpt brush, texture painting, Boolean operation, or image-to-3D reconstruction.
 - Project files have no animation field yet; timeline playback and animation import/export do not exist.
 
 ## JSON contracts
@@ -44,7 +44,7 @@ The user-facing canonical schema, all geometry keys, example commands, validatio
 - Commands: `pixel-studio-3d-commands` v1; apply settings then run `commands` transactionally.
 - Supported ops: `addPrimitive`, `addMesh`, `setMeshData`, `setTransform`, `setMaterial`, `setGeometry`, `removeObject`, `clear`.
 - When modifying a contract, update `validateModel()`, `normalizeCommands()`, export/import paths, the copied schema (`schemaHelp` in `app.js`), UI help, and README together. Keep v1 for compatible optional fields; bump with migrations for breaking changes.
-- `mesh.geometry.vertices` is 3..32768 local finite XYZ triples within ±1000; `triangles` is 1..65536 zero-based integer triples with valid distinct indices and nonzero area. Optional `vertexColors` is empty/omitted or one `#RRGGBB` per vertex. Duplicate vertices to create hard normal/color boundaries. The validator does not repair non-manifold topology, holes, or winding.
+- `mesh.geometry.sections` accepts 2..64 loops, each with 6..32 equal-count finite XYZ points within ±1000; `sectionColors` has one hex color per loop, or `vertexColors` has one per ring point. Alternate direct surfaces use 3..32768 vertices and 1..65536 valid, nonzero-area triangles. Validation does not repair self-intersection, non-manifold topology, or incorrect winding.
 - `window.pixelStudio3D` exposes `getJSONFormatHelp`, `getProject`, `getMesh`, `createMesh`, `setMeshData`, `applyCommands`, `exportProject`, and `exportCommandsHelp`. API edits go through the same validation, history and persistence path as JSON application.
 - Validate all commands before installation, keep IDs unique, reject unsupported geometry/ops, and avoid partially applied documents.
 - Undo/redo use model snapshots; whenever changing commits, preserve state before the edit, restore the UI and persisted model together, and do not serialize view-only reference image data.
@@ -83,6 +83,7 @@ The user-facing canonical schema, all geometry keys, example commands, validatio
 - Built-in primitives remain useful for blockouts, but the new `mesh` contract allows directly authored connected surfaces. The v1-v6 Dahlia samples still use independent mesh parts; do not describe them as export-ready or VRChat-compatible avatars. Connected skin, bone rig, weight painting, UV/texture painting, and facial expression rig are still future work.
 - Keep the explicit distinction between “VRChat-like visual direction” and using VRChat SDK/code/libraries. The app does not use those technologies.
 
-- `examples/Dahlia/v6/` is the latest pose study: the two tapered sleeves are wider and cross visibly in front of the chest, hands are brought together, and rounded shoulder pieces improve the arm silhouette. `examples/Dahlia/build-v6.ps1` regenerates it from v5.
-- `MESH_JSON_INTERFACE.md` is the portable direct-vertex authoring contract. Keep its coordinates, limits, operations, and public API synchronized with `schemaHelp` and validation code.
+- `examples/Dahlia/v6/` is an earlier pose study with crossed sleeves and rounded shoulder volumes. Keep it as an immutable historical iteration.
+- `MESH_JSON_INTERFACE.md` is the portable low-poly authoring contract. Keep volume section/surface rules, limits, operations, and public API synchronized with `schemaHelp` and validation code.
 - `examples/Dahlia/v7/` is the custom mesh contract fixture. Every scene object uses explicit indexed `mesh` vertices/triangles (no built-in primitive/curve/loft type); it is deliberately a low-poly prototype, not a completed avatar.
+- `examples/Dahlia/v8/` demonstrates authored body volumes using cross-section loops, with triangle surfaces for facial and wing details. It is a cartoon blockout; inspect it from front/side/back. Its reference file is a similar local proxy, not the exact attached illustration.
