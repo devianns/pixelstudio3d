@@ -1,0 +1,2374 @@
+{
+    "format":  "pixel-studio-3d-project",
+    "version":  1,
+    "name":  "Dahlia 쨌 Celestial Angel v2",
+    "settings":  {
+                     "unit":  "unit",
+                     "bounds":  {
+                                    "x":  6,
+                                    "y":  6.5,
+                                    "z":  4
+                                },
+                     "background":  "#17264c",
+                     "grid":  true,
+                     "axes":  false
+                 },
+    "objects":  [
+                    {
+                        "id":  "dahlia-dress",
+                        "name":  "Dress · bodice",
+                        "type":  "polygon",
+                        "color":  "#91addc",
+                        "position":  {
+                                         "x":  0,
+                                         "y":  1.45,
+                                         "z":  0
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  1,
+                                      "y":  1,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points":  [
+                                                        [
+                                                            -0.56,
+                                                            0.92
+                                                        ],
+                                                        [
+                                                            -0.43,
+                                                            1.14
+                                                        ],
+                                                        [
+                                                            0.34,
+                                                            1.08
+                                                        ],
+                                                        [
+                                                            0.54,
+                                                            0.76
+                                                        ],
+                                                        [
+                                                            0.48,
+                                                            0.15
+                                                        ],
+                                                        [
+                                                            0.68,
+                                                            -0.32
+                                                        ],
+                                                        [
+                                                            0.45,
+                                                            -0.72
+                                                        ],
+                                                        [
+                                                            -0.44,
+                                                            -0.68
+                                                        ],
+                                                        [
+                                                            -0.72,
+                                                            -0.35
+                                                        ],
+                                                        [
+                                                            -0.48,
+                                                            0.12
+                                                        ]
+                                                    ],
+                                         "depth":  0.62,
+                                         "bevelSize":  0.045,
+                                         "bevelSegments":  3,
+                                         "smooth":  true,
+                                         "curveSegments":  28
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-skirt",
+                        "name":  "Dress · layered skirt",
+                        "type":  "polygon",
+                        "color":  "#dceaff",
+                        "position":  {
+                                         "x":  0,
+                                         "y":  0.84,
+                                         "z":  0.12
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  1,
+                                      "y":  1,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points":  [
+                                                        [
+                                                            -0.42,
+                                                            0.2
+                                                        ],
+                                                        [
+                                                            0.42,
+                                                            0.2
+                                                        ],
+                                                        [
+                                                            1.02,
+                                                            -0.12
+                                                        ],
+                                                        [
+                                                            1.38,
+                                                            -0.74
+                                                        ],
+                                                        [
+                                                            0.92,
+                                                            -0.9
+                                                        ],
+                                                        [
+                                                            0.35,
+                                                            -0.79
+                                                        ],
+                                                        [
+                                                            -0.2,
+                                                            -0.95
+                                                        ],
+                                                        [
+                                                            -0.88,
+                                                            -0.74
+                                                        ],
+                                                        [
+                                                            -1.16,
+                                                            -0.42
+                                                        ],
+                                                        [
+                                                            -0.88,
+                                                            -0.08
+                                                        ]
+                                                    ],
+                                         "depth":  0.56,
+                                         "bevelSize":  0.055,
+                                         "bevelSegments":  3,
+                                         "smooth":  true,
+                                         "curveSegments":  28
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-apron",
+                        "name":  "Dress · pale apron panel",
+                        "type":  "polygon",
+                        "color":  "#f5f7ff",
+                        "position":  {
+                                         "x":  0,
+                                         "y":  0.72,
+                                         "z":  0.42
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  0.75,
+                                      "y":  0.7,
+                                      "z":  0.25
+                                  },
+                        "geometry":  {
+                                         "points":  [
+                                                        [
+                                                            -0.6,
+                                                            0.4
+                                                        ],
+                                                        [
+                                                            0.54,
+                                                            0.4
+                                                        ],
+                                                        [
+                                                            0.8,
+                                                            -0.38
+                                                        ],
+                                                        [
+                                                            0.42,
+                                                            -0.56
+                                                        ],
+                                                        [
+                                                            -0.45,
+                                                            -0.52
+                                                        ],
+                                                        [
+                                                            -0.8,
+                                                            -0.28
+                                                        ]
+                                                    ],
+                                         "depth":  0.12,
+                                         "bevelSize":  0.025,
+                                         "bevelSegments":  2,
+                                         "smooth":  true,
+                                         "curveSegments":  28
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-neck",
+                        "name":  "Neck",
+                        "type":  "cylinder",
+                        "color":  "#f4c9cb",
+                        "position":  {
+                                         "x":  0,
+                                         "y":  2.63,
+                                         "z":  0.08
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  0.34,
+                                      "y":  0.44,
+                                      "z":  0.34
+                                  },
+                        "geometry":  {
+                                         "radiusTop":  0.3,
+                                         "radiusBottom":  0.3,
+                                         "height":  0.5,
+                                         "radialSegments":  12
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-face",
+                        "name":  "Face",
+                        "type":  "sphere",
+                        "color":  "#f8d9d6",
+                        "position":  {
+                                         "x":  0,
+                                         "y":  3.52,
+                                         "z":  0.08
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -8
+                                     },
+                        "scale":  {
+                                      "x":  0.78,
+                                      "y":  0.96,
+                                      "z":  0.62
+                                  },
+                        "geometry":  {
+                                         "radius":  0.72,
+                                         "widthSegments":  24,
+                                         "heightSegments":  18
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-ear-left",
+                        "name":  "Ear · left",
+                        "type":  "sphere",
+                        "color":  "#efc0c4",
+                        "position":  {
+                                         "x":  -0.72,
+                                         "y":  3.38,
+                                         "z":  0.02
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  0.19,
+                                      "y":  0.29,
+                                      "z":  0.15
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  12,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-ear-right",
+                        "name":  "Ear · right",
+                        "type":  "sphere",
+                        "color":  "#efc0c4",
+                        "position":  {
+                                         "x":  0.72,
+                                         "y":  3.38,
+                                         "z":  0.02
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  0.19,
+                                      "y":  0.29,
+                                      "z":  0.15
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  12,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-eye-left",
+                        "name":  "Eye · left",
+                        "type":  "sphere",
+                        "color":  "#38b9eb",
+                        "position":  {
+                                         "x":  -0.3,
+                                         "y":  3.54,
+                                         "z":  0.67
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -8
+                                     },
+                        "scale":  {
+                                      "x":  0.14,
+                                      "y":  0.21,
+                                      "z":  0.045
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  16,
+                                         "heightSegments":  12
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-eye-right",
+                        "name":  "Eye · right",
+                        "type":  "sphere",
+                        "color":  "#38b9eb",
+                        "position":  {
+                                         "x":  0.3,
+                                         "y":  3.54,
+                                         "z":  0.67
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -8
+                                     },
+                        "scale":  {
+                                      "x":  0.14,
+                                      "y":  0.21,
+                                      "z":  0.045
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  16,
+                                         "heightSegments":  12
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-pupil-left",
+                        "name":  "Pupil · left",
+                        "type":  "sphere",
+                        "color":  "#193256",
+                        "position":  {
+                                         "x":  -0.28,
+                                         "y":  3.55,
+                                         "z":  0.725
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  0.052,
+                                      "y":  0.105,
+                                      "z":  0.02
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  12,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-pupil-right",
+                        "name":  "Pupil · right",
+                        "type":  "sphere",
+                        "color":  "#193256",
+                        "position":  {
+                                         "x":  0.32,
+                                         "y":  3.55,
+                                         "z":  0.725
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  0.052,
+                                      "y":  0.105,
+                                      "z":  0.02
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  12,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-eye-glint-l",
+                        "name":  "Eye glint · left",
+                        "type":  "sphere",
+                        "color":  "#ffffff",
+                        "position":  {
+                                         "x":  -0.32,
+                                         "y":  3.62,
+                                         "z":  0.755
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  0.035,
+                                      "y":  0.045,
+                                      "z":  0.015
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  10,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-eye-glint-r",
+                        "name":  "Eye glint · right",
+                        "type":  "sphere",
+                        "color":  "#ffffff",
+                        "position":  {
+                                         "x":  0.28,
+                                         "y":  3.62,
+                                         "z":  0.755
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  0.035,
+                                      "y":  0.045,
+                                      "z":  0.015
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  10,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-hair-cap",
+                        "name":  "Hair · crown",
+                        "type":  "sphere",
+                        "color":  "#d9e8f8",
+                        "position":  {
+                                         "x":  -0.05,
+                                         "y":  4.05,
+                                         "z":  -0.13
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -12
+                                     },
+                        "scale":  {
+                                      "x":  0.96,
+                                      "y":  0.64,
+                                      "z":  0.74
+                                  },
+                        "geometry":  {
+                                         "radius":  0.75,
+                                         "widthSegments":  20,
+                                         "heightSegments":  14
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-hair-back",
+                        "name":  "Hair · long back locks",
+                        "type":  "polygon",
+                        "color":  "#a9c8e8",
+                        "position":  {
+                                         "x":  0,
+                                         "y":  2.72,
+                                         "z":  -0.27
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  1,
+                                      "y":  1,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points":  [
+                                                        [
+                                                            -0.72,
+                                                            1.72
+                                                        ],
+                                                        [
+                                                            -0.25,
+                                                            1.98
+                                                        ],
+                                                        [
+                                                            0.42,
+                                                            1.8
+                                                        ],
+                                                        [
+                                                            0.83,
+                                                            1.45
+                                                        ],
+                                                        [
+                                                            0.96,
+                                                            0.78
+                                                        ],
+                                                        [
+                                                            0.77,
+                                                            0.22
+                                                        ],
+                                                        [
+                                                            0.91,
+                                                            -0.38
+                                                        ],
+                                                        [
+                                                            0.63,
+                                                            -1.72
+                                                        ],
+                                                        [
+                                                            0.18,
+                                                            -1.32
+                                                        ],
+                                                        [
+                                                            -0.16,
+                                                            -1.76
+                                                        ],
+                                                        [
+                                                            -0.55,
+                                                            -1.23
+                                                        ],
+                                                        [
+                                                            -0.84,
+                                                            -1.55
+                                                        ],
+                                                        [
+                                                            -0.91,
+                                                            -0.65
+                                                        ],
+                                                        [
+                                                            -0.78,
+                                                            0.2
+                                                        ],
+                                                        [
+                                                            -0.96,
+                                                            0.9
+                                                        ]
+                                                    ],
+                                         "depth":  0.24,
+                                         "bevelSize":  0.08,
+                                         "bevelSegments":  4,
+                                         "smooth":  true,
+                                         "curveSegments":  28
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-lock-left",
+                        "name":  "Hair · left silver lock",
+                        "type":  "polygon",
+                        "color":  "#ecf5ff",
+                        "position":  {
+                                         "x":  -0.5,
+                                         "y":  2.74,
+                                         "z":  0.18
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -3
+                                     },
+                        "scale":  {
+                                      "x":  1,
+                                      "y":  1,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points":  [
+                                                        [
+                                                            0.03,
+                                                            2.12
+                                                        ],
+                                                        [
+                                                            0.48,
+                                                            2.02
+                                                        ],
+                                                        [
+                                                            0.75,
+                                                            1.62
+                                                        ],
+                                                        [
+                                                            0.66,
+                                                            0.96
+                                                        ],
+                                                        [
+                                                            0.78,
+                                                            0.35
+                                                        ],
+                                                        [
+                                                            0.57,
+                                                            -0.38
+                                                        ],
+                                                        [
+                                                            0.48,
+                                                            -1.72
+                                                        ],
+                                                        [
+                                                            0.1,
+                                                            -1.34
+                                                        ],
+                                                        [
+                                                            -0.1,
+                                                            -0.34
+                                                        ],
+                                                        [
+                                                            -0.18,
+                                                            0.78
+                                                        ],
+                                                        [
+                                                            -0.39,
+                                                            1.48
+                                                        ]
+                                                    ],
+                                         "depth":  0.2,
+                                         "bevelSize":  0.07,
+                                         "bevelSegments":  3,
+                                         "smooth":  true,
+                                         "curveSegments":  28
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-lock-right",
+                        "name":  "Hair · right silver lock",
+                        "type":  "polygon",
+                        "color":  "#e5f1ff",
+                        "position":  {
+                                         "x":  0.5,
+                                         "y":  2.78,
+                                         "z":  0.16
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  5
+                                     },
+                        "scale":  {
+                                      "x":  -1,
+                                      "y":  1,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points":  [
+                                                        [
+                                                            0.03,
+                                                            2.12
+                                                        ],
+                                                        [
+                                                            0.48,
+                                                            2.02
+                                                        ],
+                                                        [
+                                                            0.75,
+                                                            1.62
+                                                        ],
+                                                        [
+                                                            0.66,
+                                                            0.96
+                                                        ],
+                                                        [
+                                                            0.78,
+                                                            0.35
+                                                        ],
+                                                        [
+                                                            0.57,
+                                                            -0.38
+                                                        ],
+                                                        [
+                                                            0.48,
+                                                            -1.72
+                                                        ],
+                                                        [
+                                                            0.1,
+                                                            -1.34
+                                                        ],
+                                                        [
+                                                            -0.1,
+                                                            -0.34
+                                                        ],
+                                                        [
+                                                            -0.18,
+                                                            0.78
+                                                        ],
+                                                        [
+                                                            -0.39,
+                                                            1.48
+                                                        ]
+                                                    ],
+                                         "depth":  0.2,
+                                         "bevelSize":  0.07,
+                                         "bevelSegments":  3,
+                                         "smooth":  true,
+                                         "curveSegments":  28
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-bangs",
+                        "name":  "Hair · sweeping fringe",
+                        "type":  "polygon",
+                        "color":  "#dfeeff",
+                        "position":  {
+                                         "x":  -0.04,
+                                         "y":  4.22,
+                                         "z":  0.58
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -12
+                                     },
+                        "scale":  {
+                                      "x":  1,
+                                      "y":  0.58,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points":  [
+                                                        [
+                                                            -0.8,
+                                                            0.45
+                                                        ],
+                                                        [
+                                                            -0.56,
+                                                            0.75
+                                                        ],
+                                                        [
+                                                            -0.25,
+                                                            0.66
+                                                        ],
+                                                        [
+                                                            0.04,
+                                                            0.55
+                                                        ],
+                                                        [
+                                                            0.31,
+                                                            0.42
+                                                        ],
+                                                        [
+                                                            0.55,
+                                                            0.13
+                                                        ],
+                                                        [
+                                                            0.67,
+                                                            -0.35
+                                                        ],
+                                                        [
+                                                            0.53,
+                                                            -0.71
+                                                        ],
+                                                        [
+                                                            0.31,
+                                                            -0.44
+                                                        ],
+                                                        [
+                                                            0.1,
+                                                            -0.56
+                                                        ],
+                                                        [
+                                                            -0.12,
+                                                            -0.32
+                                                        ],
+                                                        [
+                                                            -0.37,
+                                                            -0.4
+                                                        ],
+                                                        [
+                                                            -0.63,
+                                                            -0.15
+                                                        ]
+                                                    ],
+                                         "depth":  0.11,
+                                         "bevelSize":  0.045,
+                                         "bevelSegments":  3,
+                                         "smooth":  true,
+                                         "curveSegments":  28
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-bang-cyan",
+                        "name":  "Hair · cyan accent lock",
+                        "type":  "polygon",
+                        "color":  "#63d8f2",
+                        "position":  {
+                                         "x":  0.38,
+                                         "y":  4.52,
+                                         "z":  0.2
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -18
+                                     },
+                        "scale":  {
+                                      "x":  1,
+                                      "y":  1,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points":  [
+                                                        [
+                                                            -0.05,
+                                                            0.35
+                                                        ],
+                                                        [
+                                                            0.3,
+                                                            0.42
+                                                        ],
+                                                        [
+                                                            0.73,
+                                                            0.22
+                                                        ],
+                                                        [
+                                                            1.02,
+                                                            -0.02
+                                                        ],
+                                                        [
+                                                            0.7,
+                                                            -0.02
+                                                        ],
+                                                        [
+                                                            0.34,
+                                                            0.1
+                                                        ],
+                                                        [
+                                                            0.03,
+                                                            -0.08
+                                                        ]
+                                                    ],
+                                         "depth":  0.12,
+                                         "bevelSize":  0.035,
+                                         "bevelSegments":  3,
+                                         "smooth":  true,
+                                         "curveSegments":  28
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-wing-left",
+                        "name":  "Wing · left silhouette",
+                        "type":  "polygon",
+                        "color":  "#e6f1ff",
+                        "position":  {
+                                         "x":  -0.72,
+                                         "y":  2.88,
+                                         "z":  -0.48
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  12
+                                     },
+                        "scale":  {
+                                      "x":  1,
+                                      "y":  1,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points":  [
+                                                        [
+                                                            -0.08,
+                                                            0.05
+                                                        ],
+                                                        [
+                                                            -0.55,
+                                                            0.28
+                                                        ],
+                                                        [
+                                                            -1.02,
+                                                            0.66
+                                                        ],
+                                                        [
+                                                            -1.65,
+                                                            1.0
+                                                        ],
+                                                        [
+                                                            -1.48,
+                                                            0.57
+                                                        ],
+                                                        [
+                                                            -1.94,
+                                                            0.72
+                                                        ],
+                                                        [
+                                                            -1.63,
+                                                            0.25
+                                                        ],
+                                                        [
+                                                            -2.14,
+                                                            0.34
+                                                        ],
+                                                        [
+                                                            -1.72,
+                                                            -0.06
+                                                        ],
+                                                        [
+                                                            -2.02,
+                                                            -0.22
+                                                        ],
+                                                        [
+                                                            -1.44,
+                                                            -0.38
+                                                        ],
+                                                        [
+                                                            -1.15,
+                                                            -0.72
+                                                        ],
+                                                        [
+                                                            -0.62,
+                                                            -0.58
+                                                        ],
+                                                        [
+                                                            -0.12,
+                                                            -0.26
+                                                        ]
+                                                    ],
+                                         "depth":  0.2,
+                                         "bevelSize":  0.06,
+                                         "bevelSegments":  3,
+                                         "smooth":  true,
+                                         "curveSegments":  28
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-wing-right",
+                        "name":  "Wing · right silhouette",
+                        "type":  "polygon",
+                        "color":  "#e6f1ff",
+                        "position":  {
+                                         "x":  0.72,
+                                         "y":  2.9,
+                                         "z":  -0.48
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -12
+                                     },
+                        "scale":  {
+                                      "x":  -1,
+                                      "y":  1,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points":  [
+                                                        [
+                                                            -0.08,
+                                                            0.05
+                                                        ],
+                                                        [
+                                                            -0.55,
+                                                            0.28
+                                                        ],
+                                                        [
+                                                            -1.02,
+                                                            0.66
+                                                        ],
+                                                        [
+                                                            -1.65,
+                                                            1.0
+                                                        ],
+                                                        [
+                                                            -1.48,
+                                                            0.57
+                                                        ],
+                                                        [
+                                                            -1.94,
+                                                            0.72
+                                                        ],
+                                                        [
+                                                            -1.63,
+                                                            0.25
+                                                        ],
+                                                        [
+                                                            -2.14,
+                                                            0.34
+                                                        ],
+                                                        [
+                                                            -1.72,
+                                                            -0.06
+                                                        ],
+                                                        [
+                                                            -2.02,
+                                                            -0.22
+                                                        ],
+                                                        [
+                                                            -1.44,
+                                                            -0.38
+                                                        ],
+                                                        [
+                                                            -1.15,
+                                                            -0.72
+                                                        ],
+                                                        [
+                                                            -0.62,
+                                                            -0.58
+                                                        ],
+                                                        [
+                                                            -0.12,
+                                                            -0.26
+                                                        ]
+                                                    ],
+                                         "depth":  0.2,
+                                         "bevelSize":  0.06,
+                                         "bevelSegments":  3,
+                                         "smooth":  true,
+                                         "curveSegments":  28
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-wing-feather-left",
+                        "name":  "Wing · inner feather left",
+                        "type":  "polygon",
+                        "color":  "#b8d5fa",
+                        "position":  {
+                                         "x":  -0.82,
+                                         "y":  2.61,
+                                         "z":  -0.08
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  22
+                                     },
+                        "scale":  {
+                                      "x":  1,
+                                      "y":  1,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points":  [
+                                                        [
+                                                            0,
+                                                            0.3
+                                                        ],
+                                                        [
+                                                            -0.45,
+                                                            0.58
+                                                        ],
+                                                        [
+                                                            -1.1,
+                                                            0.82
+                                                        ],
+                                                        [
+                                                            -0.7,
+                                                            0.35
+                                                        ],
+                                                        [
+                                                            -1.22,
+                                                            0.48
+                                                        ],
+                                                        [
+                                                            -0.72,
+                                                            0.12
+                                                        ],
+                                                        [
+                                                            -1.05,
+                                                            -0.04
+                                                        ],
+                                                        [
+                                                            -0.45,
+                                                            -0.12
+                                                        ],
+                                                        [
+                                                            0,
+                                                            -0.3
+                                                        ]
+                                                    ],
+                                         "depth":  0.1,
+                                         "bevelSize":  0.025,
+                                         "bevelSegments":  2,
+                                         "smooth":  true,
+                                         "curveSegments":  28
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-wing-feather-right",
+                        "name":  "Wing · inner feather right",
+                        "type":  "polygon",
+                        "color":  "#b8d5fa",
+                        "position":  {
+                                         "x":  0.82,
+                                         "y":  2.61,
+                                         "z":  -0.08
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -22
+                                     },
+                        "scale":  {
+                                      "x":  -1,
+                                      "y":  1,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points":  [
+                                                        [
+                                                            0,
+                                                            0.3
+                                                        ],
+                                                        [
+                                                            -0.45,
+                                                            0.58
+                                                        ],
+                                                        [
+                                                            -1.1,
+                                                            0.82
+                                                        ],
+                                                        [
+                                                            -0.7,
+                                                            0.35
+                                                        ],
+                                                        [
+                                                            -1.22,
+                                                            0.48
+                                                        ],
+                                                        [
+                                                            -0.72,
+                                                            0.12
+                                                        ],
+                                                        [
+                                                            -1.05,
+                                                            -0.04
+                                                        ],
+                                                        [
+                                                            -0.45,
+                                                            -0.12
+                                                        ],
+                                                        [
+                                                            0,
+                                                            -0.3
+                                                        ]
+                                                    ],
+                                         "depth":  0.1,
+                                         "bevelSize":  0.025,
+                                         "bevelSegments":  2,
+                                         "smooth":  true,
+                                         "curveSegments":  28
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-sleeve-left",
+                        "name":  "Sleeve · raised arm",
+                        "type":  "sphere",
+                        "color":  "#b7d2f2",
+                        "position":  {
+                                         "x":  -0.52,
+                                         "y":  2.03,
+                                         "z":  0.58
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -42
+                                     },
+                        "scale":  {
+                                      "x":  0.5,
+                                      "y":  0.82,
+                                      "z":  0.42
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  16,
+                                         "heightSegments":  12
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-sleeve-right",
+                        "name":  "Sleeve · folded arm",
+                        "type":  "sphere",
+                        "color":  "#c8dcf5",
+                        "position":  {
+                                         "x":  0.48,
+                                         "y":  2.1,
+                                         "z":  0.48
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  42
+                                     },
+                        "scale":  {
+                                      "x":  0.48,
+                                      "y":  0.78,
+                                      "z":  0.42
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  16,
+                                         "heightSegments":  12
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-collar",
+                        "name":  "Collar · white ruffle",
+                        "type":  "torus",
+                        "color":  "#ffffff",
+                        "position":  {
+                                         "x":  0,
+                                         "y":  2.58,
+                                         "z":  0.35
+                                     },
+                        "rotation":  {
+                                         "x":  90,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  0.5,
+                                      "y":  0.5,
+                                      "z":  0.55
+                                  },
+                        "geometry":  {
+                                         "radius":  0.43,
+                                         "tube":  0.1,
+                                         "radialSegments":  8,
+                                         "tubularSegments":  24
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-bow",
+                        "name":  "Neck bow · blue knot",
+                        "type":  "box",
+                        "color":  "#62bde8",
+                        "position":  {
+                                         "x":  0,
+                                         "y":  2.54,
+                                         "z":  0.58
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  0.25,
+                                      "y":  0.2,
+                                      "z":  0.1
+                                  },
+                        "geometry":  {
+                                         "width":  1,
+                                         "height":  1,
+                                         "depth":  0.5
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-bow-left",
+                        "name":  "Neck bow · left loop",
+                        "type":  "sphere",
+                        "color":  "#83d4f3",
+                        "position":  {
+                                         "x":  -0.28,
+                                         "y":  2.55,
+                                         "z":  0.52
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  22
+                                     },
+                        "scale":  {
+                                      "x":  0.32,
+                                      "y":  0.14,
+                                      "z":  0.08
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  12,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-bow-right",
+                        "name":  "Neck bow · right loop",
+                        "type":  "sphere",
+                        "color":  "#83d4f3",
+                        "position":  {
+                                         "x":  0.28,
+                                         "y":  2.55,
+                                         "z":  0.52
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -22
+                                     },
+                        "scale":  {
+                                      "x":  0.32,
+                                      "y":  0.14,
+                                      "z":  0.08
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  12,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-halo",
+                        "name":  "Halo · warm gold",
+                        "type":  "torus",
+                        "color":  "#ffe49a",
+                        "position":  {
+                                         "x":  0,
+                                         "y":  5.2,
+                                         "z":  -0.2
+                                     },
+                        "rotation":  {
+                                         "x":  76,
+                                         "y":  0,
+                                         "z":  -16
+                                     },
+                        "scale":  {
+                                      "x":  1.02,
+                                      "y":  1.02,
+                                      "z":  0.72
+                                  },
+                        "geometry":  {
+                                         "radius":  0.78,
+                                         "tube":  0.035,
+                                         "radialSegments":  10,
+                                         "tubularSegments":  48
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-star-pink",
+                        "name":  "Hair clip · pink star",
+                        "type":  "polygon",
+                        "color":  "#ff9bb5",
+                        "position":  {
+                                         "x":  -0.52,
+                                         "y":  4.54,
+                                         "z":  0.67
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  14
+                                     },
+                        "scale":  {
+                                      "x":  0.23,
+                                      "y":  0.23,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points":  [
+                                                        [
+                                                            0,
+                                                            1
+                                                        ],
+                                                        [
+                                                            0.25,
+                                                            0.28
+                                                        ],
+                                                        [
+                                                            0.95,
+                                                            0.3
+                                                        ],
+                                                        [
+                                                            0.42,
+                                                            -0.12
+                                                        ],
+                                                        [
+                                                            0.62,
+                                                            -0.92
+                                                        ],
+                                                        [
+                                                            0,
+                                                            -0.45
+                                                        ],
+                                                        [
+                                                            -0.62,
+                                                            -0.92
+                                                        ],
+                                                        [
+                                                            -0.42,
+                                                            -0.12
+                                                        ],
+                                                        [
+                                                            -0.95,
+                                                            0.3
+                                                        ],
+                                                        [
+                                                            -0.25,
+                                                            0.28
+                                                        ]
+                                                    ],
+                                         "depth":  0.08,
+                                         "bevelSize":  0.015,
+                                         "bevelSegments":  2
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-star-blue",
+                        "name":  "Hair clip · cyan star",
+                        "type":  "polygon",
+                        "color":  "#79e1f4",
+                        "position":  {
+                                         "x":  0.46,
+                                         "y":  4.66,
+                                         "z":  0.38
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -8
+                                     },
+                        "scale":  {
+                                      "x":  0.2,
+                                      "y":  0.2,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points":  [
+                                                        [
+                                                            0,
+                                                            1
+                                                        ],
+                                                        [
+                                                            0.25,
+                                                            0.28
+                                                        ],
+                                                        [
+                                                            0.95,
+                                                            0.3
+                                                        ],
+                                                        [
+                                                            0.42,
+                                                            -0.12
+                                                        ],
+                                                        [
+                                                            0.62,
+                                                            -0.92
+                                                        ],
+                                                        [
+                                                            0,
+                                                            -0.45
+                                                        ],
+                                                        [
+                                                            -0.62,
+                                                            -0.92
+                                                        ],
+                                                        [
+                                                            -0.42,
+                                                            -0.12
+                                                        ],
+                                                        [
+                                                            -0.95,
+                                                            0.3
+                                                        ],
+                                                        [
+                                                            -0.25,
+                                                            0.28
+                                                        ]
+                                                    ],
+                                         "depth":  0.08,
+                                         "bevelSize":  0.015,
+                                         "bevelSegments":  2
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-thigh",
+                        "name":  "Leg · seated thigh",
+                        "type":  "sphere",
+                        "color":  "#f4ccd0",
+                        "position":  {
+                                         "x":  0.63,
+                                         "y":  0.34,
+                                         "z":  0.27
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -18
+                                     },
+                        "scale":  {
+                                      "x":  1.38,
+                                      "y":  0.4,
+                                      "z":  0.42
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  18,
+                                         "heightSegments":  12
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-leg-left",
+                        "name":  "Leg · lower left",
+                        "type":  "sphere",
+                        "color":  "#f4ccd0",
+                        "position":  {
+                                         "x":  -0.32,
+                                         "y":  -0.4,
+                                         "z":  0.05
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  24
+                                     },
+                        "scale":  {
+                                      "x":  0.28,
+                                      "y":  0.82,
+                                      "z":  0.28
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  16,
+                                         "heightSegments":  12
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-leg-right",
+                        "name":  "Leg · lower right",
+                        "type":  "sphere",
+                        "color":  "#f4ccd0",
+                        "position":  {
+                                         "x":  0.94,
+                                         "y":  -0.53,
+                                         "z":  0.16
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -34
+                                     },
+                        "scale":  {
+                                      "x":  0.28,
+                                      "y":  0.82,
+                                      "z":  0.28
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  16,
+                                         "heightSegments":  12
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-boot-left",
+                        "name":  "Boot · left",
+                        "type":  "sphere",
+                        "color":  "#f4f7ff",
+                        "position":  {
+                                         "x":  -0.65,
+                                         "y":  -1.15,
+                                         "z":  0.16
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  20
+                                     },
+                        "scale":  {
+                                      "x":  0.42,
+                                      "y":  0.25,
+                                      "z":  0.42
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  16,
+                                         "heightSegments":  10
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-boot-right",
+                        "name":  "Boot · right",
+                        "type":  "sphere",
+                        "color":  "#f4f7ff",
+                        "position":  {
+                                         "x":  0.77,
+                                         "y":  -1.13,
+                                         "z":  0.22
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -28
+                                     },
+                        "scale":  {
+                                      "x":  0.42,
+                                      "y":  0.25,
+                                      "z":  0.42
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  16,
+                                         "heightSegments":  10
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-hair-strand-a",
+                        "name":  "Hair strand 쨌 left sweep",
+                        "type":  "curve",
+                        "color":  "#f6fbff",
+                        "position":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  1,
+                                      "y":  1,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points3D":  [
+                                                          [
+                                                              -0.82,
+                                                              4.35,
+                                                              0.68
+                                                          ],
+                                                          [
+                                                              -0.72,
+                                                              4.08,
+                                                              0.73
+                                                          ],
+                                                          [
+                                                              -0.49,
+                                                              3.83,
+                                                              0.76
+                                                          ],
+                                                          [
+                                                              -0.24,
+                                                              3.72,
+                                                              0.77
+                                                          ]
+                                                      ],
+                                         "radius":  0.018,
+                                         "tubularSegments":  28,
+                                         "radialSegments":  6
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-hair-strand-b",
+                        "name":  "Hair strand 쨌 center sweep",
+                        "type":  "curve",
+                        "color":  "#c4e8fb",
+                        "position":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  1,
+                                      "y":  1,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points3D":  [
+                                                          [
+                                                              -0.55,
+                                                              4.48,
+                                                              0.67
+                                                          ],
+                                                          [
+                                                              -0.28,
+                                                              4.22,
+                                                              0.74
+                                                          ],
+                                                          [
+                                                              0.04,
+                                                              3.96,
+                                                              0.77
+                                                          ],
+                                                          [
+                                                              0.2,
+                                                              3.76,
+                                                              0.77
+                                                          ]
+                                                      ],
+                                         "radius":  0.016,
+                                         "tubularSegments":  28,
+                                         "radialSegments":  6
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-hair-strand-c",
+                        "name":  "Hair strand 쨌 right fringe",
+                        "type":  "curve",
+                        "color":  "#ffffff",
+                        "position":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  1,
+                                      "y":  1,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points3D":  [
+                                                          [
+                                                              0.02,
+                                                              4.48,
+                                                              0.69
+                                                          ],
+                                                          [
+                                                              0.3,
+                                                              4.24,
+                                                              0.75
+                                                          ],
+                                                          [
+                                                              0.45,
+                                                              3.98,
+                                                              0.77
+                                                          ],
+                                                          [
+                                                              0.43,
+                                                              3.79,
+                                                              0.76
+                                                          ]
+                                                      ],
+                                         "radius":  0.017,
+                                         "tubularSegments":  28,
+                                         "radialSegments":  6
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-lock-curve-left",
+                        "name":  "Hair curl 쨌 left side",
+                        "type":  "curve",
+                        "color":  "#d5eaff",
+                        "position":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  1,
+                                      "y":  1,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points3D":  [
+                                                          [
+                                                              -0.72,
+                                                              3.66,
+                                                              0.56
+                                                          ],
+                                                          [
+                                                              -0.9,
+                                                              3.22,
+                                                              0.53
+                                                          ],
+                                                          [
+                                                              -0.88,
+                                                              2.75,
+                                                              0.45
+                                                          ],
+                                                          [
+                                                              -0.7,
+                                                              2.38,
+                                                              0.34
+                                                          ],
+                                                          [
+                                                              -0.82,
+                                                              2.18,
+                                                              0.24
+                                                          ]
+                                                      ],
+                                         "radius":  0.045,
+                                         "tubularSegments":  36,
+                                         "radialSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-lock-curve-right",
+                        "name":  "Hair curl 쨌 right side",
+                        "type":  "curve",
+                        "color":  "#bcecf7",
+                        "position":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  1,
+                                      "y":  1,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points3D":  [
+                                                          [
+                                                              0.69,
+                                                              3.65,
+                                                              0.5
+                                                          ],
+                                                          [
+                                                              0.89,
+                                                              3.24,
+                                                              0.48
+                                                          ],
+                                                          [
+                                                              0.86,
+                                                              2.78,
+                                                              0.39
+                                                          ],
+                                                          [
+                                                              0.7,
+                                                              2.5,
+                                                              0.28
+                                                          ],
+                                                          [
+                                                              0.91,
+                                                              2.32,
+                                                              0.18
+                                                          ]
+                                                      ],
+                                         "radius":  0.04,
+                                         "tubularSegments":  36,
+                                         "radialSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-mouth",
+                        "name":  "Face 쨌 soft smile",
+                        "type":  "curve",
+                        "color":  "#c77c91",
+                        "position":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  1,
+                                      "y":  1,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points3D":  [
+                                                          [
+                                                              -0.11,
+                                                              3.17,
+                                                              0.704
+                                                          ],
+                                                          [
+                                                              0,
+                                                              3.13,
+                                                              0.713
+                                                          ],
+                                                          [
+                                                              0.1,
+                                                              3.17,
+                                                              0.704
+                                                          ]
+                                                      ],
+                                         "radius":  0.014,
+                                         "tubularSegments":  12,
+                                         "radialSegments":  6
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-wing-feather-l2",
+                        "name":  "Wing feather 쨌 left outer",
+                        "type":  "sphere",
+                        "color":  "#f6f8ff",
+                        "position":  {
+                                         "x":  -1.63,
+                                         "y":  3.18,
+                                         "z":  -0.14
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  34
+                                     },
+                        "scale":  {
+                                      "x":  0.19,
+                                      "y":  0.58,
+                                      "z":  0.1
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  12,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-wing-feather-l3",
+                        "name":  "Wing feather 쨌 left middle",
+                        "type":  "sphere",
+                        "color":  "#d4e6ff",
+                        "position":  {
+                                         "x":  -1.72,
+                                         "y":  2.82,
+                                         "z":  -0.12
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  76
+                                     },
+                        "scale":  {
+                                      "x":  0.17,
+                                      "y":  0.56,
+                                      "z":  0.1
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  12,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-wing-feather-l4",
+                        "name":  "Wing feather 쨌 left lower",
+                        "type":  "sphere",
+                        "color":  "#eef4ff",
+                        "position":  {
+                                         "x":  -1.48,
+                                         "y":  2.48,
+                                         "z":  -0.1
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  112
+                                     },
+                        "scale":  {
+                                      "x":  0.16,
+                                      "y":  0.5,
+                                      "z":  0.1
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  12,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-wing-feather-r2",
+                        "name":  "Wing feather 쨌 right outer",
+                        "type":  "sphere",
+                        "color":  "#f6f8ff",
+                        "position":  {
+                                         "x":  1.63,
+                                         "y":  3.18,
+                                         "z":  -0.14
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -34
+                                     },
+                        "scale":  {
+                                      "x":  0.19,
+                                      "y":  0.58,
+                                      "z":  0.1
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  12,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-wing-feather-r3",
+                        "name":  "Wing feather 쨌 right middle",
+                        "type":  "sphere",
+                        "color":  "#d4e6ff",
+                        "position":  {
+                                         "x":  1.72,
+                                         "y":  2.82,
+                                         "z":  -0.12
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -76
+                                     },
+                        "scale":  {
+                                      "x":  0.17,
+                                      "y":  0.56,
+                                      "z":  0.1
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  12,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-wing-feather-r4",
+                        "name":  "Wing feather 쨌 right lower",
+                        "type":  "sphere",
+                        "color":  "#eef4ff",
+                        "position":  {
+                                         "x":  1.48,
+                                         "y":  2.48,
+                                         "z":  -0.1
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -112
+                                     },
+                        "scale":  {
+                                      "x":  0.16,
+                                      "y":  0.5,
+                                      "z":  0.1
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  12,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-hand-left",
+                        "name":  "Hand 쨌 left",
+                        "type":  "sphere",
+                        "color":  "#f7d7d5",
+                        "position":  {
+                                         "x":  -0.1,
+                                         "y":  1.73,
+                                         "z":  0.92
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -18
+                                     },
+                        "scale":  {
+                                      "x":  0.22,
+                                      "y":  0.14,
+                                      "z":  0.11
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  14,
+                                         "heightSegments":  10
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-hand-right",
+                        "name":  "Hand 쨌 right",
+                        "type":  "sphere",
+                        "color":  "#f7d7d5",
+                        "position":  {
+                                         "x":  0.12,
+                                         "y":  1.68,
+                                         "z":  0.94
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  12
+                                     },
+                        "scale":  {
+                                      "x":  0.22,
+                                      "y":  0.14,
+                                      "z":  0.11
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  14,
+                                         "heightSegments":  10
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-cheek-left",
+                        "name":  "Face 쨌 blush left",
+                        "type":  "sphere",
+                        "color":  "#f4b5c6",
+                        "position":  {
+                                         "x":  -0.48,
+                                         "y":  3.27,
+                                         "z":  0.57
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  0.13,
+                                      "y":  0.065,
+                                      "z":  0.025
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  12,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-cheek-right",
+                        "name":  "Face 쨌 blush right",
+                        "type":  "sphere",
+                        "color":  "#f4b5c6",
+                        "position":  {
+                                         "x":  0.48,
+                                         "y":  3.27,
+                                         "z":  0.57
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  0.13,
+                                      "y":  0.065,
+                                      "z":  0.025
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  12,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-dress-fold-1",
+                        "name":  "Dress fold 쨌 left",
+                        "type":  "curve",
+                        "color":  "#d7eaff",
+                        "position":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  1,
+                                      "y":  1,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points3D":  [
+                                                          [
+                                                              -0.46,
+                                                              1.08,
+                                                              0.51
+                                                          ],
+                                                          [
+                                                              -0.27,
+                                                              0.86,
+                                                              0.55
+                                                          ],
+                                                          [
+                                                              -0.16,
+                                                              0.62,
+                                                              0.55
+                                                          ]
+                                                      ],
+                                         "radius":  0.018,
+                                         "tubularSegments":  16,
+                                         "radialSegments":  6
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-dress-fold-2",
+                        "name":  "Dress fold 쨌 right",
+                        "type":  "curve",
+                        "color":  "#b8d1ee",
+                        "position":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  0
+                                     },
+                        "scale":  {
+                                      "x":  1,
+                                      "y":  1,
+                                      "z":  1
+                                  },
+                        "geometry":  {
+                                         "points3D":  [
+                                                          [
+                                                              0.36,
+                                                              1.0,
+                                                              0.53
+                                                          ],
+                                                          [
+                                                              0.22,
+                                                              0.78,
+                                                              0.55
+                                                          ],
+                                                          [
+                                                              0.32,
+                                                              0.56,
+                                                              0.53
+                                                          ]
+                                                      ],
+                                         "radius":  0.022,
+                                         "tubularSegments":  16,
+                                         "radialSegments":  6
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-skirt-ruffle-1",
+                        "name":  "Skirt ruffle 쨌 left",
+                        "type":  "sphere",
+                        "color":  "#f9fbff",
+                        "position":  {
+                                         "x":  -0.84,
+                                         "y":  0.34,
+                                         "z":  0.58
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -32
+                                     },
+                        "scale":  {
+                                      "x":  0.31,
+                                      "y":  0.12,
+                                      "z":  0.07
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  12,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-skirt-ruffle-2",
+                        "name":  "Skirt ruffle 쨌 left center",
+                        "type":  "sphere",
+                        "color":  "#f9fbff",
+                        "position":  {
+                                         "x":  -0.43,
+                                         "y":  0.12,
+                                         "z":  0.62
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  -12
+                                     },
+                        "scale":  {
+                                      "x":  0.29,
+                                      "y":  0.1,
+                                      "z":  0.07
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  12,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-skirt-ruffle-3",
+                        "name":  "Skirt ruffle 쨌 right center",
+                        "type":  "sphere",
+                        "color":  "#f9fbff",
+                        "position":  {
+                                         "x":  0.38,
+                                         "y":  0.08,
+                                         "z":  0.62
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  14
+                                     },
+                        "scale":  {
+                                      "x":  0.3,
+                                      "y":  0.1,
+                                      "z":  0.07
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  12,
+                                         "heightSegments":  8
+                                     }
+                    },
+                    {
+                        "id":  "dahlia-skirt-ruffle-4",
+                        "name":  "Skirt ruffle 쨌 right",
+                        "type":  "sphere",
+                        "color":  "#f9fbff",
+                        "position":  {
+                                         "x":  0.84,
+                                         "y":  0.29,
+                                         "z":  0.58
+                                     },
+                        "rotation":  {
+                                         "x":  0,
+                                         "y":  0,
+                                         "z":  32
+                                     },
+                        "scale":  {
+                                      "x":  0.31,
+                                      "y":  0.12,
+                                      "z":  0.07
+                                  },
+                        "geometry":  {
+                                         "radius":  0.5,
+                                         "widthSegments":  12,
+                                         "heightSegments":  8
+                                     }
+                    }
+                ]
+}

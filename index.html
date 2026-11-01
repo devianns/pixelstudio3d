@@ -31,6 +31,12 @@
         <div class="section-label">모델 오브젝트 <span id="objectCount">0</span></div>
         <div id="objectList" class="object-list"></div>
         <button id="loadDahliaBtn" class="button primary full dahlia-load">Dahlia v1 열기</button>
+        <button id="loadDahliaV2Btn" class="button full dahlia-load">Dahlia v2 열기</button>
+        <button id="loadDahliaV3Btn" class="button full dahlia-load">Dahlia v3 열기</button>
+        <button id="loadDahliaV4Btn" class="button full dahlia-load">Dahlia v4 열기</button>
+        <button id="loadDahliaV5Btn" class="button full dahlia-load">Dahlia v5 열기</button>
+        <button id="loadDahliaV6Btn" class="button full dahlia-load">Dahlia v6 열기 · 포즈 다듬기</button>
+        <button id="loadDahliaV7Btn" class="button full dahlia-load">Dahlia v7 열기 · 직접 메시</button>
         <div class="panel-bottom">
           <div class="section-label">참조 이미지</div>
           <label class="drop-zone" for="referenceFile"><span class="upload-icon">↥</span><b>2D 이미지 불러오기</b><small>PNG, JPG, WEBP</small></label>
@@ -44,7 +50,7 @@
           <div class="tool-tabs"><button class="tool-tab active" data-mode="translate">이동 <kbd>G</kbd></button><button class="tool-tab" data-mode="rotate">회전 <kbd>R</kbd></button><button class="tool-tab" data-mode="scale">크기 <kbd>S</kbd></button></div>
           <div class="viewport-actions"><button id="viewHomeBtn" class="quiet-button">⌂ 정면 맞춤</button><label class="toggle-label"><input id="gridToggle" type="checkbox" checked /> 바닥 격자</label><button id="backgroundBtn" class="swatch-button" title="뷰포트 배경색"><i></i></button></div>
         </div>
-        <div id="viewport" class="viewport"><div id="referenceLayer" class="reference-layer"></div><div class="viewport-empty" id="emptyHint"><strong>3D 장면을 시작하세요</strong><span>왼쪽에서 기본 메시를 추가하거나 JSON 명령을 불러오세요.</span></div><div class="view-cube">PERSPECTIVE<br /><b>XYZ</b></div><div class="viewport-footer"><span id="selectionLabel">선택된 오브젝트 없음</span><span>Orbit: 드래그 · Pan: 우클릭 · Zoom: 휠</span></div></div>
+        <div id="viewport" class="viewport"><div id="referenceLayer" class="reference-layer"></div><div class="viewport-empty" id="emptyHint"><strong>3D 장면을 시작하세요</strong><span>기본 메시를 놓거나, JSON/API로 직접 정점 메시를 정의하세요.</span></div><div class="view-cube">PERSPECTIVE<br /><b>XYZ</b></div><div class="viewport-footer"><span id="selectionLabel">선택된 오브젝트 없음</span><span>Orbit: 드래그 · Pan: 우클릭 · Zoom: 휠</span></div></div>
         <div class="bottom-bar"><div><span class="status-dot"></span> 로컬 브라우저에서 동작</div><div id="saveStatus">변경사항 자동 저장</div><div id="sceneStats">오브젝트 0 · 삼각형 0</div></div>
       </section>
       <aside class="right-panel panel">
@@ -56,15 +62,17 @@
           <div class="field-grid"><label>크기 X<input id="scaleX" type="number" min="0.01" step="0.1" /></label><label>Y<input id="scaleY" type="number" min="0.01" step="0.1" /></label><label>Z<input id="scaleZ" type="number" min="0.01" step="0.1" /></label></div>
           <div class="divider"></div><div class="section-label">메시 외형</div>
           <label class="wide-field">이름<input id="objectName" type="text" /></label>
-          <div class="field-grid two"><label>도형<select id="objectType"><option value="box">큐브</option><option value="sphere">구</option><option value="cylinder">원기둥</option><option value="cone">원뿔</option><option value="torus">도넛</option><option value="polygon">윤곽 메시</option></select></label><label>색상<input id="objectColor" type="color" value="#8b9cf6" /></label></div>
+          <div class="field-grid two"><label>도형<select id="objectType"><option value="box">큐브</option><option value="sphere">구</option><option value="cylinder">원기둥</option><option value="cone">원뿔</option><option value="torus">도넛</option><option value="polygon">윤곽 메시</option><option value="curve">곡선 튜브</option><option value="loft">단면 볼륨</option><option value="mesh">직접 구성 메시</option></select></label><label>색상<input id="objectColor" type="color" value="#8b9cf6" /></label></div>
           <div id="densityFields" class="density-fields"></div>
           <button id="deleteObjectBtn" class="danger-button">오브젝트 삭제</button>
         </section>
         <section id="settingsPanel" class="inspector-content hidden">
           <div class="section-label">모델 규격</div><label class="wide-field">작업 단위<select id="modelUnit"><option value="unit">임의 단위</option><option value="cm">cm</option><option value="m">m</option></select></label>
+          <label class="wide-field">렌더 스타일<select id="renderStyle"><option value="soft">부드러운 음영</option><option value="toon">카툰 셀 셰이딩</option></select></label>
+          <label class="wide-field">바닥 높이 Y<input id="floorY" type="number" step="0.1" /></label>
           <label class="wide-field">기준 부피 (X × Y × Z)<div class="field-grid three"><input id="boundsX" type="number" min="1" step="1" /><input id="boundsY" type="number" min="1" step="1" /><input id="boundsZ" type="number" min="1" step="1" /></div></label>
           <label class="check-row"><input id="showAxes" type="checkbox" checked /> XYZ 축 표시</label>
-          <div class="divider"></div><div class="section-label">JSON 인터페이스</div><p class="hint">모델 문서에는 규격, 단위, 메시 종류, 세그먼트 밀도, 위치·회전·크기, 색상이 저장됩니다. 실제 임의 토폴로지 메시 편집과 자동 AI 호출은 다음 확장 단계입니다.</p>
+          <div class="divider"></div><div class="section-label">JSON 인터페이스</div><p class="hint">직접 구성 메시의 정점·삼각형·정점 색상도 JSON과 공개 JavaScript API로 만들고 수정할 수 있습니다. AI 모델 호출은 외부에서 수행합니다.</p>
           <button id="loadExampleBtn" class="button full">간단한 블록아웃 예제 불러오기</button>
         </section>
       </aside>
