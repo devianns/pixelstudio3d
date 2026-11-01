@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#171923" />
+  <meta name="description" content="브라우저에서 기본 3D 메시를 배치하고 JSON으로 편집·공유하는 Pixel Studio 3D." />
+  <title>Pixel Studio 3D</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}
+  </script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#"><span class="brand-icon">◇</span><span>PIXEL STUDIO <b>3D</b></span></a>
+      <div class="project-title"><span class="status-dot"></span><span id="projectName">새 3D 프로젝트</span><small>로컬 작업공간</small></div>
+      <div class="top-actions">
+        <button id="undoBtn" class="icon-button" title="실행 취소 (Ctrl+Z)">↶</button><button id="redoBtn" class="icon-button" title="다시 실행 (Ctrl+Y)">↷</button>
+        <button id="openProjectBtn" class="button">열기</button><button id="saveProjectBtn" class="button primary">JSON 내보내기</button>
+        <input id="projectFile" type="file" accept=".json,application/json" hidden />
+      </div>
+    </header>
+    <main class="workspace">
+      <aside class="left-panel panel">
+        <div class="panel-heading"><span>장면</span><button id="addPrimitiveBtn" class="mini-button">＋ 추가</button></div>
+        <div class="primitive-buttons">
+          <button data-add="box">큐브</button><button data-add="sphere">구</button><button data-add="cylinder">원기둥</button><button data-add="cone">원뿔</button><button data-add="torus">도넛</button><button data-add="polygon">윤곽 메시</button>
+        </div>
+        <div class="section-label">모델 오브젝트 <span id="objectCount">0</span></div>
+        <div id="objectList" class="object-list"></div>
+        <button id="loadDahliaBtn" class="button primary full dahlia-load">Dahlia v1 열기</button>
+        <div class="panel-bottom">
+          <div class="section-label">참조 이미지</div>
+          <label class="drop-zone" for="referenceFile"><span class="upload-icon">↥</span><b>2D 이미지 불러오기</b><small>PNG, JPG, WEBP</small></label>
+          <input id="referenceFile" type="file" accept="image/*" hidden />
+          <div class="reference-controls"><label>표시 <input id="referenceToggle" type="checkbox" checked /></label><label>투명도 <input id="referenceOpacity" type="range" min="10" max="100" value="45" /></label></div>
+          <p class="hint">참조 이미지는 뷰포트 위에 표시되며 모델 데이터에는 포함되지 않습니다.</p>
+        </div>
+      </aside>
+      <section class="center-column">
+        <div class="viewport-toolbar">
+          <div class="tool-tabs"><button class="tool-tab active" data-mode="translate">이동 <kbd>G</kbd></button><button class="tool-tab" data-mode="rotate">회전 <kbd>R</kbd></button><button class="tool-tab" data-mode="scale">크기 <kbd>S</kbd></button></div>
+          <div class="viewport-actions"><button id="viewHomeBtn" class="quiet-button">⌂ 정면 맞춤</button><label class="toggle-label"><input id="gridToggle" type="checkbox" checked /> 바닥 격자</label><button id="backgroundBtn" class="swatch-button" title="뷰포트 배경색"><i></i></button></div>
+        </div>
+        <div id="viewport" class="viewport"><div id="referenceLayer" class="reference-layer"></div><div class="viewport-empty" id="emptyHint"><strong>3D 장면을 시작하세요</strong><span>왼쪽에서 기본 메시를 추가하거나 JSON 명령을 불러오세요.</span></div><div class="view-cube">PERSPECTIVE<br /><b>XYZ</b></div><div class="viewport-footer"><span id="selectionLabel">선택된 오브젝트 없음</span><span>Orbit: 드래그 · Pan: 우클릭 · Zoom: 휠</span></div></div>
+        <div class="bottom-bar"><div><span class="status-dot"></span> 로컬 브라우저에서 동작</div><div id="saveStatus">변경사항 자동 저장</div><div id="sceneStats">오브젝트 0 · 삼각형 0</div></div>
+      </section>
+      <aside class="right-panel panel">
+        <div class="inspector-tabs"><button class="active" data-panel="inspector">속성</button><button data-panel="settings">모델 설정</button></div>
+        <section id="inspectorPanel" class="inspector-content">
+          <div class="section-label">변환</div>
+          <div class="field-grid"><label>위치 X<input id="posX" type="number" step="0.1" /></label><label>Y<input id="posY" type="number" step="0.1" /></label><label>Z<input id="posZ" type="number" step="0.1" /></label></div>
+          <div class="field-grid"><label>회전 X<input id="rotX" type="number" step="5" /></label><label>Y<input id="rotY" type="number" step="5" /></label><label>Z<input id="rotZ" type="number" step="5" /></label></div>
+          <div class="field-grid"><label>크기 X<input id="scaleX" type="number" min="0.01" step="0.1" /></label><label>Y<input id="scaleY" type="number" min="0.01" step="0.1" /></label><label>Z<input id="scaleZ" type="number" min="0.01" step="0.1" /></label></div>
+          <div class="divider"></div><div class="section-label">메시 외형</div>
+          <label class="wide-field">이름<input id="objectName" type="text" /></label>
+          <div class="field-grid two"><label>도형<select id="objectType"><option value="box">큐브</option><option value="sphere">구</option><option value="cylinder">원기둥</option><option value="cone">원뿔</option><option value="torus">도넛</option><option value="polygon">윤곽 메시</option></select></label><label>색상<input id="objectColor" type="color" value="#8b9cf6" /></label></div>
+          <div id="densityFields" class="density-fields"></div>
+          <button id="deleteObjectBtn" class="danger-button">오브젝트 삭제</button>
+        </section>
+        <section id="settingsPanel" class="inspector-content hidden">
+          <div class="section-label">모델 규격</div><label class="wide-field">작업 단위<select id="modelUnit"><option value="unit">임의 단위</option><option value="cm">cm</option><option value="m">m</option></select></label>
+          <label class="wide-field">기준 부피 (X × Y × Z)<div class="field-grid three"><input id="boundsX" type="number" min="1" step="1" /><input id="boundsY" type="number" min="1" step="1" /><input id="boundsZ" type="number" min="1" step="1" /></div></label>
+          <label class="check-row"><input id="showAxes" type="checkbox" checked /> XYZ 축 표시</label>
+          <div class="divider"></div><div class="section-label">JSON 인터페이스</div><p class="hint">모델 문서에는 규격, 단위, 메시 종류, 세그먼트 밀도, 위치·회전·크기, 색상이 저장됩니다. 실제 임의 토폴로지 메시 편집과 자동 AI 호출은 다음 확장 단계입니다.</p>
+          <button id="loadExampleBtn" class="button full">간단한 블록아웃 예제 불러오기</button>
+        </section>
+      </aside>
+    </main>
+    <section class="json-dock panel">
+      <div class="json-header"><div><b>AI / JSON 명령 패널</b><small>규격에 맞는 JSON을 붙여넣고 적용할 수 있습니다.</small></div><div class="json-actions"><button id="copySchemaBtn" class="button">인터페이스 복사</button><button id="applyJsonBtn" class="button primary">JSON 적용</button></div></div>
+      <textarea id="jsonEditor" spellcheck="false" aria-label="JSON 모델 편집기"></textarea><div id="jsonStatus" class="json-status">모델 문서와 명령 문서를 모두 지원합니다.</div>
+    </section>
+    <div id="toast" class="toast" role="status"></div>
+  </div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
